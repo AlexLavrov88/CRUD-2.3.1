@@ -5,34 +5,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import web.service.CarService;
+import web.service.UserService;
 
 @Controller
-@RequestMapping("/cars")
-public class CarController {
+@RequestMapping("/users")
+public class UserController {
 
 
-    private CarService carService;
+    private UserService carService;
 
-    public CarController(CarService carDao) {
+    public UserController(UserService carDao) {
         this.carService = carDao;
     }
 
     @GetMapping("")
     public String getCarList(Model model) {
 
-        model.addAttribute("car", carService.getCarList());
-        return "cars";
+        model.addAttribute("user", carService.getUserList());
+        return "users";
 
     }
 
     @GetMapping(value = "/{index}")
     public String getCarId(@PathVariable("index") int index, Model model) {
         if (index >= 5) {
-            model.addAttribute("car", carService.getCarList());
+            model.addAttribute("user", carService.getUserList());
         } else {
-            model.addAttribute("car", carService.getCarById(index));
+            model.addAttribute("user", carService.getUserById(index));
         }
-        return "cars";
+        return "users";
     }
 }
