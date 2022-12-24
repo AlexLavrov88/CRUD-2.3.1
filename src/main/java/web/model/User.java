@@ -1,5 +1,7 @@
 package web.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class User {
     private int id;
     private String firstName;
